@@ -6,9 +6,11 @@ import { SupermercadoModule } from './supermercado/supermercado.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CiudadEntity } from './ciudad/ciudad.entity';
 import { SupermercadoEntity } from './supermercado/supermercado.entity';
+import { CiudadSupermercadoModule } from './ciudad-supermercado/ciudad-supermercado.module';
+import { CiudadSupermercadoService } from './ciudad-supermercado/ciudad-supermercado.service';
 
 @Module({
-  imports: [CiudadModule, SupermercadoModule,
+  imports: [CiudadModule, SupermercadoModule,CiudadSupermercadoService,
      TypeOrmModule.forRoot({
        type: 'postgres',
        host: 'localhost',
@@ -21,6 +23,7 @@ import { SupermercadoEntity } from './supermercado/supermercado.entity';
        synchronize: true,
        keepConnectionAlive: true
      }),
+     CiudadSupermercadoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
